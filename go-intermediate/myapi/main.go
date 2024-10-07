@@ -31,7 +31,12 @@ func main() {
 		io.WriteString(w, "Posting Nice...\n")
 	}
 	http.HandleFunc("/article/nice",niceArticleHandler)
-
+	
+	commentHandler := func (w http.ResponseWriter, req *http.Request)  {
+		io.WriteString(w,"Posting Comment...\n")	
+	}
+	http.HandleFunc("/comment", commentHandler)
+	
 	log.Println("server start at port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
