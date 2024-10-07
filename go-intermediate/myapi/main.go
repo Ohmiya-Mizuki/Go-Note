@@ -17,6 +17,13 @@ func main() {
 	}
 	http.HandleFunc("/article", postArticleHandler)
 	
+	articleListHandler := func(w http.ResponseWriter, req *http.Request) {
+		io.WriteString(w, "Article List\n")
+	}
+	http.HandleFunc("/articleList", articleListHandler)
+	
+	
+	
 	log.Println("server start at port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
