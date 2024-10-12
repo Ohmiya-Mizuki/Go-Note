@@ -34,10 +34,12 @@ func PostArticleHandler(w http.ResponseWriter, req *http.Request) {
 	
 	var reqArticle models.Article
 	if err := json.Unmarshal(reqBodybuffer, &reqArticle); err != nil {
-		http.Error(w, "fail to get request bode\n", http.StatusBadRequest)
+		http.Error(w, "fail to decode json\n", http.StatusBadRequest)
 		return
 	}
 	
+		//fmt.Printf("%+v\n", reqArticle)
+
 	article := reqArticle
 	jsonData, err := json.Marshal(article)
 	if err != nil {
