@@ -43,6 +43,9 @@ func TestMain(m *testing.M) {
 }
 
 func TestA(t *testing.T) {
+	t.Cleanup(func() {
+		fmt.Println("cleanup")
+	})
 	fmt.Println("testA")
 }
 
